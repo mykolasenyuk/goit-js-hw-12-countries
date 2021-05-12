@@ -1,21 +1,4 @@
 
-// export default function onSearch(e) {
-//     e.preventDefault();
-//     const searhQuery = e.target.value
-//     const BASE_URL = `https://restcountries.eu/rest/v2/name/${searhQuery}`;
-
-//     fetch(BASE_URL)
-//         .then(r => r.json())
-//     .then(console.log)
-// }
-
-
-
-
-// function fetchCountries(countryName) {
-    
-//     return fetch(`${BASE_URL}${countryName}`).then(response => response.json());
-// }
 export default class ApiServise{
     constructor() {
         this.searchQuery = '';

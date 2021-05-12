@@ -8,7 +8,7 @@ import ApiServise from '../js/api-service'
 const refs = {
     // card: document.querySelector('.card'),
     input: document.querySelector('input'),
-    countriesList: document.querySelector('countries-list')
+    countriesList: document.querySelector('.countries-list')
 }
 
 console.log(refs.countriesList);
@@ -24,19 +24,21 @@ function onSearch(e) {
     // clearCardList();
 
     apiServise.query = e.target.value;
-    // if (apiServise.query === '') {
-    //     return alert('empty');
-    // }
+    if (apiServise.query === ' ') {
+        return alert('empty');
+    }
     apiServise.fetchCountries().then(data => {
         console.log(data)
-     createCoutriesListMarup(data)
+        
+        insertMarup(data)
     })
 
 }
-function createCoutriesListMarup(item) {
-    refs.countriesList.insertAdjacentHTML('beforeend', item)
+function insertMarup(items) {
+    refs.countriesList.insertAdjacentHTML
+    ('beforeend',countiesCardTemplate(items))
 }
-// function buildListMarkupItem(items) {
+// function createCoutriesListMarup(items) {
 //   return countiesCardTemplate(items);
 // }
 
