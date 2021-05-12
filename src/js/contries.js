@@ -21,48 +21,46 @@ refs.input.addEventListener('input', onSearch);
 
 function onSearch(e) {
     e.preventDefault();
-    // clearCardList();
+    clearCardList();
 
     apiServise.query = e.target.value;
-    if (apiServise.query === ' ') {
-        return alert('empty');
-    }
+   
     apiServise.fetchCountries().then(data => {
         console.log(data)
+        if (data.length > 10) {
+           return alert('too many') 
+        }else if (data.length > 1) {
+           countriesMarup(data) 
+        }
+         else{countryMarup(data)}
         
-        insertMarup(data)
+        
     })
 
 }
-function insertMarup(items) {
+function countriesMarup(items) {
     refs.countriesList.insertAdjacentHTML
     ('beforeend',countiesCardTemplate(items))
 }
+
+function countryMarup(items) {
+    refs.countriesList.insertAdjacentHTML
+    ('beforeend',countryCardTemplate(items))
+}
+//
 // function createCoutriesListMarup(items) {
 //   return countiesCardTemplate(items);
 // }
 
 
 
-// function clearCardList() {
-//     refs.countriesList.innerHTML = '';
+
+
+
+function clearCardList() {
+    refs.countriesList.innerHTML = '';
     
-// }
+}
 
 
-// function searchCountry(evt) {
-//     evt.preventDefault();
-//     const searhQuery = evt.currentTarget.elements.query.value
-//     const searchValue = evt.target.value
-//     console.log(searchValue)
-//     API.fetchCountries(searchValue)
-//         // .then(renderCountryCard)
-    
-// }
 
-
-// console.log(counties)
-// function renderCountryCard(country) {
-//     const markup = countiesCardTemplate(country)
-//     refs.card.innerHTML=markup
-// }
