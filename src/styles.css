@@ -1,0 +1,5 @@
+.country-img {
+  height: 300px;
+  object-fit: cover;
+  max-width: 200px;
+}
