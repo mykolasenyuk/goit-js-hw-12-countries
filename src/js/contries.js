@@ -7,12 +7,9 @@ import PNotify from '../../node_modules/pnotify/dist/es/PNotify.js'
 
 
 const refs = {
-    // card: document.querySelector('.card'),
     input: document.querySelector('input'),
     countriesList: document.querySelector('.countries-list')
 }
-
-console.log(refs.countriesList);
 
 
 const apiServise = new ApiServise()
@@ -27,7 +24,7 @@ function onSearch(e) {
     apiServise.query = e.target.value;
    
     apiServise.fetchCountries().then(data => {
-        // console.log(data)
+    
         if (data.length > 10) {
             PNotify.error({
           text: 'Too many matches found. Please enter a more spesific query!',
@@ -51,10 +48,6 @@ function countryMarup(items) {
     refs.countriesList.insertAdjacentHTML
     ('beforeend',countryCardTemplate(items))
 }
-
-
-
-
 
 
 
