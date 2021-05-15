@@ -14,13 +14,12 @@ export default class ApiServise{
                   if (response.ok) {
                       return response.json();
                   }
-                  else {
+                  
                       PNotify.notice({
-          text: '404 Country is not found!',
-        })}
+          text: 'Country is not found!',
+        })
               }       
-              )
-             
+        )        
     }
     get query() {
         return this.searchQuery
