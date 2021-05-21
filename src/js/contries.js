@@ -24,18 +24,23 @@ function onSearch(e) {
     apiServise.query = e.target.value;
    
     apiServise.fetchCountries().then(data => {
-    
+        
+
         if (data.length > 10) {
-            PNotify.error({
+            PNotify.notice({
           text: 'Too many matches found. Please enter a more spesific query!',
         })
       
         }else if (data.length > 1) {
            countriesMarup(data) 
-        }
+        } 
+        
          else{countryMarup(data)}
-        
-        
+     
+    }).catch(error => {
+        PNotify.error({
+          text: 'Please,enter valid country name!',
+        })
     })
 
 }
